@@ -14,3 +14,4 @@ sqlparse==0.3.0
 urllib3==1.25.8
 virtualenv==16.7.5
 virtualenvwrapper-win==1.2.5
+whitenoise==5.0.1
