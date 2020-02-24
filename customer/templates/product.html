@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="row my-5 mx-5 px-5" style="  box-shadow: 2px 2px 3px 2px #D3D3D3; border-radius: 0px;">
+
+    <div class="card px-2 my-5 py-2 "  style="width: 28rem; margin-left:23px; margin-bottom:50px; box-shadow: 2px 2px 3px 2px #D3D3D3; border-radius: 0px;">
+    <img class="card-img-top" src="https://homelane.com/cdn-cgi/image/width=1440,fit=cover/https://super.homelane.com/products/07dec18/entertainment_unit/6.jpg"  alt="Card image cap">
+
+    </div>
+    <div class="card px-2 my-5 ml-5 py-2 col-6"  style="width: 28rem;  box-shadow: 2px 2px 3px 2px #D3D3D3; border-radius: 0px;">
+        <h4>Location: {{product.area}}</h4>
+        <p>Bedrooms: {{product.bedrooms}}</p>
+        <p>Bathrooms: {{product.bathrooms}}</p>
+        <p>Rent/Month: {{product.expected_rent}} RS</p>
+        <p>Advance Deposit:{{product.expected_advance}} RS</p>
+        <p class="text-justify">Description: Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially.</p>
+    </div>
+</div>
+
+
+{% endblock %}

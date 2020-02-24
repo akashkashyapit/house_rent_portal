@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>{% block title %}At-Quest{% endblock %}</title>
+    <style type="text/css">
+        .asteriskField{
+        display:none;
+        }
+        form .alert li ui{
+        list-style:none;
+        }
+        form ul li{
+        padding:0px;
+        margin:0px;
+        }
+
+
+    </style>
+    <style>
+       {% block css %} {% endblock %}
+  </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg fixed-top navbar-light  pb-2 mb-5" style="background-color: #00CED1; color: white;">
+    <div class="container">
+        <a class="navbar-brand btn " href="{% url 'home' %}" style="color:#00CED1; background-color: white;  font-size: 20px;"><b>At-Quest</b></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'home' %}" style="color:white;">Home</a>
+                </li>
+              {% if user.is_authenticated %}
+<!--              <li class="nav-item">-->
+<!--                    <a class="nav-link" href="#" style="color:white;">Secret</a>-->
+<!--                </li>-->
+                {% else %}
+              <li class="nav-item">
+                    <a class="btn mr-0 ml-5" href="{% url 'add_house' %}" style="background-color: #00CED1; color: white; border-color: white;">Register Your House</a>
+                </li>
+              {% endif %}
+            </ul>
+
+            {% if user.is_authenticated %}
+              <ul class="navbar-nav">
+                  <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle btn" style="background-color: #00CED1; color: white; border-color: white;" href="#" id="navbarDropdown" role="button"
+                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <strong style="color:white; text-transform: capitalize;" > {{ user.username }} </strong>
+                      </a>
+                      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                          <a class="dropdown-item" href="{% url 'password_change' %}">Change Password</a>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="{% url 'secret' %}">Generate Ticket</a>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="{% url 'see_ticket' %}">Status Ticket</a>
+                      </div>
+                  </li>
+              </ul>
+            {% else %}
+            <form class="form-inline my-2 my-lg-0">
+                <a href="{% url 'signup' %}" class="btn  mr-2" style="background-color: #00CED1; color: white; border-color: white;" >Signup</a>
+                <a href="{% url 'login' %}" class="btn " style="background-color: #00CED1; color: white; border-color: white;">Log In</a>
+            </form>
+            {% endif %}
+        </div>
+    </div>
+</nav>
+<div class="container-fluid " style="margin-top: 65px;">
+    {% block content %}
+    {% endblock %}
+</div>
+
+
+<!-- Footer -->
+<footer class="page-footer font-small  special-color-dark pt-4">
+
+ <div class="card text-center">
+
+  <div class="card-body">
+    <h5 class="card-title" style="color:#00CED1;">Smart and Clean</h5>
+    <p class="card-text">Best and affordable house near you</p>
+
+  </div>
+
+</div>
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3 mb-3"style="background-color: #00CED1; color: white; ">© 2020 Copyright:
+    <a href="#" style=" color: white;"> AtQuest.com</a>
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+</html>
+

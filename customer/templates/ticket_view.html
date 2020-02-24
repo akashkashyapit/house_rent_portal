@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<a class="btn" href="{% url 'secret' %}" style="background-color: white; color: #00CED1; border-color: #00CED1;">Generate ticket</a>
+    {% for i in tickets %}
+            {% if i.uname == user.username %}
+                <div class="card col-8 my-4" style=" border-color: white; box-shadow: 2px 3px 4px 2px #00CED1; border-radius: 0px;">
+                  <div class="card-body" >
+                      <h5 class="card-title"><b>Ticket No:</b> {{ i.id }}</h5>
+                      <p class="card-text"><b>Issue:</b> {{ i.message }}</p>
+                      <p class="card-text"><b>Answer: </b>{{ i.reply }}</p>
+                      {% if i.status == "Created" %}
+                        <p style="color:blue;">Created</p>
+                      {% elif i.status == "Processing" %}
+                        <p style="color:yellow;">Processing</p>
+                      {% elif i.status == "Complete" %}
+                        <p style="color:#39FF14;">Complete</p>
+                      {% endif %}
+                  </div>
+                </div>
+            {% endif %}
+    {% endfor %}
+{% endblock %}
