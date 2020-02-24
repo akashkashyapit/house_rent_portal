@@ -1,1 +1,1 @@
-web: gunicorn atwuqst.wsgi --log-file
+web: gunicorn atwuqst.wsgi --log-file -
